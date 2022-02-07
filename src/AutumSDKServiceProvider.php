@@ -15,7 +15,7 @@ class AutumSDKServiceProvider extends ServiceProvider
     {
         
         $this->publishes([
-            __DIR__.'/config/autum.php' => config_path('autum.php'),
+            __DIR__.'/../config/autum.php' => config_path('autum.php'),
         ]);
     }
 
@@ -27,7 +27,7 @@ class AutumSDKServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/autum.php', 'autum',
+            __DIR__.'/../config/autum.php', 'autum',
         );
     }
     
