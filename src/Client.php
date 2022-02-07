@@ -23,8 +23,8 @@ class Client
 
     public function __construct()
     {
-        $this->apiUrl = config(sprintf('autum.%.endpoints.accounts', config('app.env', 'local')));
-        $this->apiKey = config(sprintf('autum.%.api_key', config('app.env', 'local')));
+        $this->apiUrl = config(sprintf('autum.%s.endpoints.accounts', config('app.env', 'local')));
+        $this->apiKey = config(sprintf('autum.%s.api_key', config('app.env', 'local')));
     }
 
     /**
@@ -61,6 +61,7 @@ class Client
     {
         
         $response =  Http::baseUrl($this->apiUrl())
+                            ->withoutVerifying()
                             ->withHeaders(array_merge([
                                 'Authorization' => 'Bearer ' . $this->apiKey()
                             ], $headers))

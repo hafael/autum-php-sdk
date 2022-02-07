@@ -15,7 +15,7 @@ class User extends Client
     {
         parent::__construct();
 
-        $this->apiUrl = config(sprintf('autum.%.endpoints.accounts', config('app.env', 'local')));
+        $this->apiUrl = config(sprintf('autum.%s.endpoints.accounts', config('app.env', 'local')));
     }
 
 
@@ -24,9 +24,16 @@ class User extends Client
      */
     protected $resource = 'user';
 
+    public function account()
+    {
+        $response = $this->sendRequest('get', 'api/account', []);
+
+        return $this->response($response);
+    }
+
     public function profile()
     {
-        $response = $this->sendRequest('get', $this->resourcePath($this->resource), []);
+        $response = $this->sendRequest('get', $this->resource . '/profile', []);
 
         return $this->response($response);
     }
