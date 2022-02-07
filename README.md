@@ -1,1 +1,1 @@
-## Pacote de integração com o provedor de identidade SAML da Autum.
+## SDK PHP oficial de integração com os produtos da Autum.

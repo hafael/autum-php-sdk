@@ -13,18 +13,18 @@ class Client
     /**
      * @var string
      */
-    protected $apiKey = 'API_KEY';
+    protected $apiKey;
     
     /**
      * @var string
      */
-    protected $apiUrl = 'https://accounts.autum.com.br';
+    protected $apiUrl;
 
 
-    public function __construct($apiUrl, $apiKey, $keyName)
+    public function __construct()
     {
-        $this->apiUrl = $apiUrl;
-        $this->apiKey = $apiKey;
+        $this->apiUrl = config(sprintf('autum.%.endpoints.accounts', config('app.env', 'local')));
+        $this->apiKey = config(sprintf('autum.%.api_key', config('app.env', 'local')));
     }
 
     /**

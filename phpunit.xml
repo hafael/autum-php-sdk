@@ -5,7 +5,7 @@
          beStrictAboutTestsThatDoNotTestAnything="true"
          backupStaticAttributes="false" verbose="true" strict="true">
     <testsuites>
-        <testsuite name="Autum SAML for Laravel">
+        <testsuite name="Autum PHP SDK">
             <directory>./test</directory>
         </testsuite>
     </testsuites>
