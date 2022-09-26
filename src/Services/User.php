@@ -31,6 +31,17 @@ class User extends Client
         return $this->response($response);
     }
 
+    public function checkPassword($password)
+    {
+        $response = $this->sendRequest('post', 'api/account/check-password', [
+            'form_params' => [
+                'password' => $password
+            ]
+        ]);
+
+        return $response->ok();
+    }
+
     public function profile()
     {
         $response = $this->sendRequest('get', $this->resource . '/profile', []);

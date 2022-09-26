@@ -20,6 +20,11 @@ class Client
      */
     protected $apiUrl;
 
+    /**
+     * @var mixed
+     */
+    protected $response;
+
 
     public function __construct()
     {
@@ -74,13 +79,11 @@ class Client
     {
         
         if($response->serverError() || $response->clientError()) {
-            Log::error(class_basename($this) .': ' . $response->status() . ' - Request error!');
             return false;
         }
 
         if(!$response->successful())
         {
-            Log::error(class_basename($this) .': ' . $response->status() . ' - Undefined error!');
             return false;
         }
 
@@ -88,8 +91,13 @@ class Client
 
     }
 
+    public function ok() {
+        return !$this->response->successful();
+    }
+
     protected function parseResponse(Response $response)
     {
+        $this->response = $response;
         
         return $response->json();
     }
