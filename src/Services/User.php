@@ -42,6 +42,26 @@ class User extends Client
         return $response->ok();
     }
 
+    public function create($data = [])
+    {
+        $response = $this->sendRequest('post', 'api/account', [
+            'form_params' => $data
+        ]);
+
+        return $this->response($response);
+    }
+
+    public function getUserByEmail($email)
+    {
+        $response = $this->sendRequest('post', 'api/account/email', [
+            'form_params' => [
+                'email' => $email
+            ]
+        ]);
+
+        return $this->response($response);
+    }
+
     public function profile()
     {
         $response = $this->sendRequest('get', $this->resource . '/profile', []);
